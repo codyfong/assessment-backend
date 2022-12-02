@@ -1,8 +1,19 @@
 const compliments = ["Gee, you're a smart cookie!", "Cool shirt!", "Your Javascript skills are stellar."]
-
+const fortunes = [
+    'A gambler not only will lose what he has, but also will lose what he doesn’t have.', 
+    'A golden egg of opportunity falls into your lap this month.', 
+    'All will go well with your new project.' ]
 
 
 module.exports = {
+
+    getFortune: (req, res) => {
+        // choose random fortune
+        let randomIndex = Math.floor(Math.random() * fortunes.length);
+        let randomFortune = fortunes[randomIndex];
+      
+        res.status(200).send(randomFortune);
+    },
 
     getCompliment: (req, res) => {
         // choose random compliment
@@ -29,8 +40,8 @@ module.exports = {
         // console.log(req.query)
         // console.log(req.body)
 
-        let {index} = req.body
-        compliments.splice(index, 1, 'Nice!')
+        let {index, newCompliment} = req.body
+        compliments.splice(index, 1, newCompliment)
         // console.log(compliments)
         res.status(200).send(compliments);
         

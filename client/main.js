@@ -1,4 +1,5 @@
 const complimentBtn = document.getElementById("complimentButton")
+const fortuneBtn = document.getElementById("fortuneButton")
 const allBtn = document.getElementById("allComplimentsButton")
 const compList = document.querySelector("#complimentsList")
 const form = document.querySelector('form')
@@ -21,7 +22,7 @@ const showList = arr => {
 
         let updateButton = document.createElement('button')
         listItem.appendChild(updateButton)
-        updateButton.textContent = "Make this say nice"
+        updateButton.textContent = "Update this compliment with written one"
         updateButton.id = index
         updateButton.addEventListener('click', updateCompliment)
 
@@ -29,6 +30,14 @@ const showList = arr => {
     })
     
 }
+
+const getFortune = () => {
+    axios.get("http://localhost:4000/api/fortune/")
+        .then(res => {
+            const data = res.data;
+            alert(data);
+    });
+};
 
 const getCompliment = () => {
     axios.get("http://localhost:4000/api/compliment/")
@@ -62,9 +71,9 @@ const addCompliment = evt => {
 const updateCompliment = (evt) => {
     evt.preventDefault()
 
-    axios.put(`http://localhost:4000/api/compliment/`, {index: evt.target.id})
+    axios.put(`http://localhost:4000/api/compliment/`, {index: evt.target.id, newCompliment: complimentInput.value})
     .then(res =>{
-        console.log('past here')
+        // console.log('past here')
         let { data } = res
         showList(data)
     })
@@ -84,5 +93,6 @@ const deleteCompliment = evt => {
 
 
 complimentBtn.addEventListener('click', getCompliment)
+fortuneBtn.addEventListener('click', getFortune)
 allBtn.addEventListener('click', showAllCompliments)
 form.addEventListener('submit', addCompliment)

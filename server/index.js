@@ -7,10 +7,11 @@ app.use(cors());
 
 app.use(express.json());
 
-const { getCompliment, showAllCompliments, addCompliment, updateCompliment, deleteCompliment } = require('./controller')
+const { getFortune, getCompliment, showAllCompliments, addCompliment, updateCompliment, deleteCompliment } = require('./controller')
 
 app.get("/api/showAll", showAllCompliments);
 app.get("/api/compliment", getCompliment);
+app.get("/api/fortune", getFortune);
 app.post("/api/compliment", addCompliment)
 app.put("/api/compliment", updateCompliment)
 app.delete("/api/compliment/:index", deleteCompliment)
