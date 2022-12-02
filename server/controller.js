@@ -2,7 +2,9 @@ const compliments = ["Gee, you're a smart cookie!", "Cool shirt!", "Your Javascr
 const fortunes = [
     'A gambler not only will lose what he has, but also will lose what he doesn’t have.', 
     'A golden egg of opportunity falls into your lap this month.', 
-    'All will go well with your new project.' ]
+    'All will go well with your new project.',
+    'A lifetime friend shall soon be made.',
+    'Chance favors those in motion.']   
 
 
 module.exports = {
